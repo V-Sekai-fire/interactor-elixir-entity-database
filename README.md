@@ -1,21 +1,20 @@
-# EntityDatabase
+# interactor-elixir-entity-database
 
-**TODO: Add description**
+An Elixir prototype that receives fixed-size entity states over UDP and passes them through a dataflow pipeline that hashes and orders them.
 
-## Installation
+## What it is for
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `entity_database` to your list of dependencies in `mix.exs`:
+It explores a world server that collects every player's state each tick. Pipeline filters hash each incoming state and arrange states in a left-child, right-sibling tree, and a small engine client script in `client/` sends test states. `design.md` holds the notes it started from.
 
-```elixir
-def deps do
-  [
-    {:entity_database, "~> 0.1.0"}
-  ]
-end
+## Build and run
+
+```sh
+mix deps.get
+mix test
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/entity_database>.
+The numeric backend needs a native tensor library, and `HACKING.md` notes its setup.
 
+## Licence
+
+MIT; see LICENSE.
